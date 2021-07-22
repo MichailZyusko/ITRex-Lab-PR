@@ -1,15 +1,24 @@
 {
-  "name": "eslint-boilerplate",
+  "name": "itrex-lab",
   "version": "1.0.0",
-  "description": "",
+  "description": "All node js lab homework and projects are contained here",
   "main": "index.js",
   "scripts": {
-    "lint": "./node_modules/eslint/bin/eslint.js ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichailZyusko/ITRex-Lab.git"
+  },
+  "author": "Michail Zyusko",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichailZyusko/ITRex-Lab/issues"
+  },
+  "homepage": "https://github.com/MichailZyusko/ITRex-Lab#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.4",
+    "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4"
