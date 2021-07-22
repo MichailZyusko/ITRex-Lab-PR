@@ -1,6 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-param-reassign */
-/* Bызвать функцию crasher так, чтобы из объекта a не удалялось поле bla */
+
+/*
+ Bызвать функцию crasher так, чтобы из объекта a не удалялось поле bla
+*/
 
 function crasher(a) {
   delete a.bla;
