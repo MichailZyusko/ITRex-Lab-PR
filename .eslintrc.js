@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 module.exports = {
   env: {
     browser: true,
@@ -8,7 +9,6 @@ module.exports = {
   extends: [
     'airbnb-base',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
   },
