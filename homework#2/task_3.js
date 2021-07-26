@@ -27,7 +27,7 @@ copy(4, 1, 1) // 3
 copy(5, 1, 2) // 4
 */
 
-function copy(N, xerox1, xerox2) {
+function copy(n, xerox1, xerox2) {
   const min = Math.min(xerox1, xerox2);
   const max = Math.max(xerox1, xerox2);
   let time = 0;
@@ -39,7 +39,7 @@ function copy(N, xerox1, xerox2) {
   let slow = max;
 
   // time идёт шагами по min(xerox1, xerox2)
-  for (let i = 1; i < N; i++) {
+  for (let i = 1; i < n; i++) {
     // Медленный ксерокс уже что-то напечатал
     slow -= min;
 

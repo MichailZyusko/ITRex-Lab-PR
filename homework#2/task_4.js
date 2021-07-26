@@ -40,8 +40,8 @@ genMagicSquare(3);
   ]
 */
 
-function fillArray(N) {
-  return Array(N).fill(0).map(() => Array(N).fill(0));
+function fillArray(n) {
+  return Array(n).fill(0).map(() => Array(n).fill(0));
 }
 
 function magicSquareOdd(n) {
@@ -93,10 +93,10 @@ function magicSquareOdd(n) {
     D B
 */
 
-function magicSquareEven(N) {
-  const half = N / 2;
+function magicSquareEven(n) {
+  const half = n / 2;
   const halfSquared = half ** 2;
-  const array = fillArray(N);
+  const array = fillArray(n);
   const tempArray = magicSquareOdd(half);
 
   // Заполняем квадрат четвертями
@@ -108,19 +108,19 @@ function magicSquareEven(N) {
   }
   // D см. 100 стр.
   for (let i = 0; i < half; i++) {
-    for (let j = half; j < N; j++) {
+    for (let j = half; j < n; j++) {
       array[i][j] = tempArray[i][j - half] + 2 * halfSquared;
     }
   }
   // C см. 100 стр.
-  for (let i = half; i < N; i++) {
+  for (let i = half; i < n; i++) {
     for (let j = 0; j < half; j++) {
       array[i][j] = tempArray[i - half][j] + 3 * halfSquared;
     }
   }
   // B см. 100 стр.
-  for (let i = half; i < N; i++) {
-    for (let j = half; j < N; j++) {
+  for (let i = half; i < n; i++) {
+    for (let j = half; j < n; j++) {
       array[i][j] = tempArray[i - half][j - half] + halfSquared;
     }
   }
@@ -131,7 +131,7 @@ function magicSquareEven(N) {
   const x = 0;
   const y = 1;
 
-  for (let i = 6; i < N; i++) {
+  for (let i = 6; i < n; i++) {
     if (i % 4 && !(i % 2)) shift++;
   }
 
@@ -155,12 +155,12 @@ function magicSquareEven(N) {
     }
     if (j) {
       const key = array[half - y][x];
-      array[half - y][x] = array[N - y][x];
-      array[N - y][x] = key;
+      array[half - y][x] = array[n - y][x];
+      array[n - y][x] = key;
     }
   }
 
-  for (let j = half + 1; j < N - 1; j++) {
+  for (let j = half + 1; j < n - 1; j++) {
     for (let i = 1; i < half - 1; i++) {
       const key = array[i][y];
       array[i][y] = array[half + i][y];
@@ -171,16 +171,16 @@ function magicSquareEven(N) {
   return array;
 }
 
-function magicSquareSuperEven(N) {
+function magicSquareSuperEven(n) {
   // Создаем пустой массив
-  const array = fillArray(N);
+  const array = fillArray(n);
   let low = 1;
-  let high = N * N;
+  let high = n * n;
 
   // Заполняем массив согласно правилу взятого с:
   // https://studbooks.net/2397795/matematika_himiya_fizika/postroenie_magicheskih_kvadratov_chetnogo_poryadka
-  for (let i = 0; i < N; i++) {
-    for (let j = 0; j < N; j++) {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
       array[i][j] = (i % 4 === j % 4 || (i + j) % 4 === 3) ? high-- : low++;
     }
   }
@@ -188,15 +188,15 @@ function magicSquareSuperEven(N) {
   return array;
 }
 
-function genMagicSquare(N) {
+function genMagicSquare(n) {
   // Рассматриваем частные случаи
-  if (N === 1) return [1];
-  if (N === 2) return 'Impossible';
+  if (n === 1) return [1];
+  if (n === 2) return 'Impossible';
 
   // В зависимости от типа четности строим квадрат
-  if (N % 2) return magicSquareOdd(N);
-  if (N % 4) return magicSquareEven(N);
-  return magicSquareSuperEven(N);
+  if (n % 2) return magicSquareOdd(n);
+  if (n % 4) return magicSquareEven(n);
+  return magicSquareSuperEven(n);
 }
 
 console.time('Test');

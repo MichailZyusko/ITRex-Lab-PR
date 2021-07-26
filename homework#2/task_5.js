@@ -39,7 +39,8 @@ function deleteTrash(arr, res) {
   }
 }
 
-function findKayakAmount(people, maxLoad) {
+function findKayakAmount(arr, maxLoad) {
+  const people = arr;
   people.sort((a, b) => b - a);
   if (people[0] > maxLoad) { // Проверка на реализуемость задачи
     throw new Error('Input correct data');
