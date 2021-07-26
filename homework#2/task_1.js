@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-mixed-operators */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-expressions */
@@ -64,23 +65,36 @@ function bulbsMemory(n, array) {
 }
 
 function benchmark(f) {
-  console.time('Test#1');
-  for (let i = 0; i < 1e6; i++) {
-    f(20, [2, 3, 8]);
+  {
+    console.time('Test#1');
+    const start = process.memoryUsage.rss();
+    for (let i = 0; i < 1e6; i++) {
+      f(20, [2, 3, 8]);
+    }
+    console.log(`MemoryUsage: ${Math.round((start - process.memoryUsage().heapUsed) / 1024 / 1024 * 100) / 100} MB`);
+    console.timeEnd('Test#1');
   }
-  console.timeEnd('Test#1');
-
   console.log('=================');
-
-  console.time('Test#2');
-  for (let i = 0; i < 1e6; i++) {
-    f(172, [19, 2, 7, 13, 40, 23, 16, 1, 45, 9]);
+  {
+    console.time('Test#2');
+    const start = process.memoryUsage.rss();
+    for (let i = 0; i < 1e6; i++) {
+      f(172, [19, 2, 7, 13, 40, 23, 16, 1, 45, 9]);
+    }
+    console.log(`MemoryUsage: ${Math.round((start - process.memoryUsage().heapUsed) / 1024 / 1024 * 100) / 100} MB`);
+    console.timeEnd('Test#2');
   }
-  console.timeEnd('Test#2');
 }
 
-benchmark(bulbsTime); // or benchmark(bulbsMemory);
+// console.log('Time');
+// benchmark(bulbsTime); // or benchmark(bulbsMemory);
+// console.log();
+
+console.log('Memory');
+benchmark(bulbsMemory); // or benchmark(bulbsMemory);
+console.log();
 
 // В массиве могут быть только натуральные числа
-console.log(bulbsTime(20, [2, 3, 8])); // returns 8
-console.log(bulbsTime(172, [19, 2, 7, 13, 40, 23, 16, 1, 45, 9]));// returns 99
+// console.log('===========================');
+// console.log(bulbsMemory(20, [2, 3, 8])); // returns 8
+// console.log(bulbsMemory(172, [19, 2, 7, 13, 40, 23, 16, 1, 45, 9]));// returns 99
