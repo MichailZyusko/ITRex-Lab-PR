@@ -1,11 +1,10 @@
 const StringFormatter = require('./stringFormatter');
 
 module.exports = class StringRemover extends StringFormatter {
-  constructor(regex, replacement) {
+  constructor(regEx) {
     super();
-    this.regex = regex;
-    this.replacement = replacement;
+    this.regEx = regEx;
   }
 
-  removeNonUniqueChars = (str) => str.replace(this.regex, this.replacement);
+  removeNonUniqueChars = (str) => str.replace(this.regEx, '');
 };

@@ -9,10 +9,15 @@ const Subtraction = require('./components/subtraction');
 const Summation = require('./components/summation');
 const Division = require('./components/division');
 
-const mult = new Multiplication(50, 5);
-const subt = new Subtraction(50, 5);
-const summ = new Summation(50, 5);
-const divi = new Division(50, 5);
+const mult = new Multiplication();
+const subt = new Subtraction();
+const summ = new Summation();
+const divi = new Division();
+
+mult.calculate(50, 5);
+subt.calculate(50, 5);
+summ.calculate(50, 5);
+divi.calculate(50, 5);
 
 function test(objArray) {
   objArray.forEach((item) => {

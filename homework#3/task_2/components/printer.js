@@ -1,38 +1,17 @@
-module.exports = class Printer {
-  logToMorse = () => {
-    const morseNum = new Map(
-      [
-        ['0', '–––––'], ['1', '•––––'], ['2', '••–––'],
-        ['3', '•••––'], ['4', '••••–'], ['5', '•••••'],
-        ['6', '–••••'], ['7', '––•••'], ['8', '–––••'],
-        ['9', '––––•'], ['-', '–•••–'], ['.', '••••••'],
-      ],
-    );
+const { morseNum, romanNum } = require('./src/symbolStore');
 
-    return this.result
-      .toString()
-      .split('')
-      .map((item) => morseNum.get(item))
-      .join(' ');
+module.exports = class Printer {
+  constructor() {
+    this.result = null;
   }
 
-  logToRoman = () => {
-    const romanNum = {
-      M: 1000,
-      CM: 900,
-      D: 500,
-      CD: 400,
-      C: 100,
-      XC: 90,
-      L: 50,
-      XL: 40,
-      X: 10,
-      IX: 9,
-      V: 5,
-      IV: 4,
-      I: 1,
-    };
+  logToMorse = () => this.result
+    .toString()
+    .split('')
+    .map((item) => morseNum.get(item))
+    .join(' ')
 
+  logToRoman = () => {
     let num = this.result;
     let roman = '';
 

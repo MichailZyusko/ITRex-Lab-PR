@@ -9,32 +9,19 @@ const fetch = require('node-fetch');
 const requiredNumOfPeople = 3;
 
 class RandomUsers {
-  #URL = 'https://randomuser.me/api/'
+  #URL = 'https://randomuser.me/api/?results='
 
-  constructor(numOfPeople) {
-    this.numOfPeople = numOfPeople;
-  }
-
-  fetchUsersData = () => fetch(this.#URL)
+  fetchUsersData = (numOfPeople) => fetch(`${this.#URL}${numOfPeople}`)
     .then((res) => res.json()); // Getting user data
 
-  logUserList = (arr) => { // Output the result to the console in a beautiful form
-    arr.forEach((item) => {
-      console.log(JSON.stringify(...item.results, null, 4));
-    });
-  }
-
-  async getUsers() {
-    const list = [];
-
-    for (let i = 0; i < this.numOfPeople; i += 1) {
-      list.push(this.fetchUsersData()); // Create array of promise
-    }
-
-    return this.logUserList(await Promise.all(list)); // Waiting for all promises to be done
-  }
+  getUsers = (numOfPeople) => this.fetchUsersData(numOfPeople);
 }
 
-const UserList = new RandomUsers(requiredNumOfPeople);
+const UserList = new RandomUsers();
 
-UserList.getUsers();
+const prom = new Promise((resolve) => {
+  resolve(UserList.getUsers(requiredNumOfPeople));
+});
+
+// Output the result to the console in a beautiful form
+prom.then((data) => console.log(JSON.stringify(data.results, null, 4)));

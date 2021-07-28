@@ -27,10 +27,10 @@ const NumberRemover = require('./components/numberRemover');
 const StringFormatter = require('./components/stringFormatter');
 const StringRemover = require('./components/stringRemover');
 
-const stringWithUniqueCharacters = new StringFormatter();
+const stringWithNoRepeatingChar = new StringFormatter();
 const stringWithNoRepeatingNum = new NumberRemover();
 const stringWithNoRepeatingDate = new DateRemover(); // dateFormat YYYY-MM-DD (':', '.', '-')
-const stringWithNoRepeatingStr = new StringRemover(/\d/g, '|'); // replace all digit on '|'
+const stringWithNoRepeatingStr = new StringRemover(/ell/g); // remove all 'ello' in string
 
 function test(objArray) {
   const input = 'Hello, world!1123 2019-10-30 2019-10-30';
@@ -43,7 +43,7 @@ function test(objArray) {
 }
 
 test([
-  stringWithUniqueCharacters,
+  stringWithNoRepeatingChar,
   stringWithNoRepeatingNum,
   stringWithNoRepeatingDate,
   stringWithNoRepeatingStr,
