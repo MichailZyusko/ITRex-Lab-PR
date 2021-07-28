@@ -4,6 +4,9 @@
   "description": "All node js lab homework and projects are contained here",
   "main": "index.js",
   "scripts": {
+    "task_1": "node homework#3/task_1/task_1.js",
+    "task_2": "node homework#3/task_2/task_2.js",
+    "task_3": "node homework#3/task_3/task_3.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +25,8 @@
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
