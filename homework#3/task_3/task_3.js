@@ -9,9 +9,9 @@ const fetch = require('node-fetch');
 const requiredNumOfPeople = 3;
 
 class RandomUsers {
-  #URL = 'https://randomuser.me/api/?results='
+  #URL = 'https://randomuser.me/api/'
 
-  fetchUsersData = (numOfPeople) => fetch(`${this.#URL}${numOfPeople}`)
+  fetchUsersData = (numOfPeople) => fetch(`${this.#URL}?results=${numOfPeople}`)
     .then((res) => res.json()); // Getting user data
 
   getUsers = (numOfPeople) => this.fetchUsersData(numOfPeople);
